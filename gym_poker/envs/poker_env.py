@@ -1,0 +1,32 @@
+"""
+Gym envirnoments for poker ai
+versions: [0, ]
+"""
+import gym
+
+class PokerEnvV0(gym.Env):
+    """
+    Gym envirnoment for poker ai
+    version: 0
+    """
+    metadata = {'render.modes': ['human', 'rgb_array']}
+
+    def __init__(self, player_n=3):
+        _ = player_n
+        self.observation_space = None
+        self.action_space = None
+
+    def step(self, action):
+        state = None
+        done = False
+        reward = 0
+
+        return state, reward, done, {}
+
+    def reset(self):
+        state = None
+
+        return state
+
+    def render(self, mode='human'):
+        pass
