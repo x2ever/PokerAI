@@ -2,6 +2,7 @@
 Objects for poker game.
 """
 import random
+from typing import List
 
 
 class Card(int):
@@ -45,7 +46,7 @@ class Deck:
         self._suffled_cards = self.sample_cards.copy()
         random.shuffle(self._suffled_cards)
 
-    def pop(self, pop_n: int = 1) -> list:
+    def pop(self, pop_n: int = 1) -> List[Card]:
         """
         >>> deck = Deck()
         >>> len(deck)
