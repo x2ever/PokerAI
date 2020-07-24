@@ -1,8 +1,12 @@
 """Test Module with sigle file during developing"""
+# pylint: disable=R0903
 import os
 import sys
 
-class bcolors:
+class Bcolors:
+    """
+    Palette for stdout text color.
+    """
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
@@ -30,17 +34,17 @@ if __name__ == "__main__":
     TEST_PATH = 'gym_poker'
     TEST_FILES = search(TEST_PATH)
     # install development dependency
-    print(bcolors.HEADER + "install development dependency" + bcolors.ENDC)
+    print(Bcolors.HEADER + "install development dependency" + Bcolors.ENDC)
     os.system('%s %s' % (sys.executable, '-m pip install -r requirements.txt'))
     # install module
-    print(bcolors.HEADER + "installing gym_poker module" + bcolors.ENDC)
+    print(Bcolors.HEADER + "installing gym_poker module" + Bcolors.ENDC)
     os.system('%s %s' % (sys.executable, '-m pip install -e .'))
     # lint test
-    print(bcolors.HEADER + "Lint test" + bcolors.ENDC)
+    print(Bcolors.HEADER + "Lint test" + Bcolors.ENDC)
     os.system('%s %s %s' % (sys.executable, '-m pylint', TEST_PATH))
     # run test
-    print(bcolors.HEADER + "Running test" + bcolors.ENDC)
+    print(Bcolors.HEADER + "Running test" + Bcolors.ENDC)
     for test_file in TEST_FILES:
         os.system('%s %s' % (sys.executable, test_file))
 
-    print(bcolors.OKGREEN + "The testing is done. Check the result." + bcolors.ENDC)
+    print(Bcolors.OKGREEN + "The testing is done. Check the result." + Bcolors.ENDC)
