@@ -12,12 +12,12 @@ class Card(int):
     [Doctest]
     >>> card = Card(3, 4)
     >>> card
-    CLOVER 5
+    CLOVER 6
     >>> int(card)
     43
     """
     PATTERNS = ["SPADE", "DAIMOND", "HEART", "CLOVER"]
-    NUMBERS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+    NUMBERS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
     def __init__(self, pattern: int, number: int):
         self._pattern = pattern
@@ -34,6 +34,14 @@ class Card(int):
 
     def __repr__(self):
         return f"{Card.PATTERNS[self._pattern]} {Card.NUMBERS[self._number]}"
+
+    @property
+    def number(self):
+        return self._number
+
+    @property
+    def pattern(self):
+        return self._pattern
 
 
 class Deck:
