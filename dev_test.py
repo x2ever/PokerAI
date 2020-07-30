@@ -26,7 +26,7 @@ def search(test_path):
         for file_name in file_names:
             ext = os.path.splitext(file_name)[-1]
             if ext == '.py':
-                temp.append("%s\\%s" % (paths, file_name))
+                temp.append("%s/%s" % (paths, file_name))
     return temp
 
 
