@@ -3,6 +3,7 @@
 from typing import List
 from gym_poker.envs.poker.card import Card
 
+
 class Ranks:
     """
     Define Ranks in poker and find a winners.
@@ -41,10 +42,10 @@ class Ranks:
             return temp
 
         check_functions = [
-            Ranks.check_straightflush, Ranks.check_fourcard,
-            Ranks.check_fullhouse, Ranks.check_flush, Ranks.check_straight,
-            Ranks.check_threecard, Ranks.check_twopair, Ranks.check_onepair,
-            Ranks.check_highcard
+            Ranks.check_straight_flush, Ranks.check_four_card,
+            Ranks.check_full_house, Ranks.check_flush, Ranks.check_straight,
+            Ranks.check_three_card, Ranks.check_two_pair, Ranks.check_one_pair,
+            Ranks.check_high_card
             ]
 
         for check_function in check_functions:
@@ -54,13 +55,13 @@ class Ranks:
         return result
 
     @staticmethod
-    def check_fourcard(cards: List[Card]):
+    def check_four_card(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 1), Card(2, 1), Card(3, 1), Card(2, 9), Card(0, 12), Card(1, 8), Card(0, 1)]
         >>> data
         [DAIMOND 3, HEART 3, CLOVER 3, HEART J, SPADE A, DAIMOND 10, SPADE 3]
-        >>> ranks.check_fourcard(data)
+        >>> ranks.check_four_card(data)
         1
         """
         assert len(cards) == 7
@@ -75,13 +76,13 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_fullhouse(cards: List[Card]):
+    def check_full_house(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 2)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE 4]
-        >>> ranks.check_fullhouse(data)
+        >>> ranks.check_full_house(data)
         2
         """
         assert len(cards) == 7
@@ -99,13 +100,13 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_threecard(cards: List[Card]):
+    def check_three_card(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 2)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE 4]
-        >>> ranks.check_fullhouse(data)
+        >>> ranks.check_three_card(data)
         2
         """
         assert len(cards) == 7
@@ -120,18 +121,18 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_twopair(cards: List[Card]):
+    def check_two_pair(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 10)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE Q]
-        >>> ranks.check_twopair(data)
+        >>> ranks.check_two_pair(data)
         [3, 2]
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 12)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE A]
-        >>> ranks.check_twopair(data)
+        >>> ranks.check_two_pair(data)
         [12, 3]
         """
         assert len(cards) == 7
@@ -151,19 +152,19 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_onepair(cards: List[Card]):
+    def check_one_pair(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 10)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE Q]
-        >>> ranks.check_twopair(data)
-        [3, 2]
+        >>> ranks.check_one_pair(data)
+        3
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 12)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE A]
-        >>> ranks.check_twopair(data)
-        [12, 3]
+        >>> ranks.check_one_pair(data)
+        12
         """
         assert len(cards) == 7
 
@@ -178,13 +179,13 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_highcard(cards: List[Card]):
+    def check_high_card(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 2), Card(3, 3), Card(0, 12), Card(1, 8), Card(0, 10)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 4, CLOVER 5, SPADE A, DAIMOND 10, SPADE Q]
-        >>> ranks.check_highcard(data)
+        >>> ranks.check_high_card(data)
         12
         """
         assert len(cards) == 7
@@ -234,18 +235,18 @@ class Ranks:
         return -1
 
     @staticmethod
-    def check_straightflush(cards: List[Card]):
+    def check_straight_flush(cards: List[Card]):
         """
         >>> ranks = Ranks()
         >>> data = [Card(1, 2), Card(2, 3), Card(3, 4), Card(3, 5), Card(0, 6), Card(1, 8), Card(0, 10)]
         >>> data
         [DAIMOND 4, HEART 5, CLOVER 6, CLOVER 7, SPADE 8, DAIMOND 10, SPADE Q]
-        >>> ranks.check_straightflush(data)
+        >>> ranks.check_straight_flush(data)
         -1
         >>> data = [Card(1, 12), Card(1, 0), Card(1, 1), Card(1, 2), Card(1, 3), Card(1, 8), Card(0, 10)]
         >>> data
         [DAIMOND A, DAIMOND 2, DAIMOND 3, DAIMOND 4, DAIMOND 5, DAIMOND 10, SPADE Q]
-        >>> ranks.check_straightflush(data)
+        >>> ranks.check_straight_flush(data)
         3
         """
         assert len(cards) == 7
@@ -300,6 +301,7 @@ class Ranks:
                             return temp
 
         return -1
+
 
 if __name__ == "__main__":
     import doctest

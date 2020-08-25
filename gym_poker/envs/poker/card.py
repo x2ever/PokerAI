@@ -1,5 +1,6 @@
 """Card for poker game."""
 
+
 class Card(int):
     """
     Card object to play in poker game.

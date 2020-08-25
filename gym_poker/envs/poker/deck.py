@@ -3,6 +3,7 @@ import random
 from typing import List
 from gym_poker.envs.poker.card import Card
 
+
 class Deck:
     """
     Deck object that shuffles and distributes cards.
