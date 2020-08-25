@@ -2,12 +2,15 @@
 from abc import ABC, abstractmethod
 from gym.spaces import Discrete, Tuple, Box
 
+
 class BasePlayer(ABC):
-    """Abstact Classs for poker player"""
+    """Abstract Class for poker player"""
     ACTION_SPACE = Tuple((Discrete(3), Box(low=0, high=1, shape=(1,))))
 
     def __init__(self, stack: float):
-        self._stack = stack
+        self.stack = stack
+        self.alive = True
+        self.all_in = False
 
     @abstractmethod
     def action(self, information) -> Tuple:
@@ -15,8 +18,9 @@ class BasePlayer(ABC):
 
     @property
     def stack(self) -> float:
-        """Property for member varialbe: stack"""
-        return self._stack
+        """Property for member variable: stack"""
+        return self.stack
+
 
 class RandomPlayer(BasePlayer):
     """Create action randomly"""
@@ -27,6 +31,7 @@ class RandomPlayer(BasePlayer):
     def action(self, information):
         _ = information
         return self.ACTION_SPACE.sample()
+
 
 class ModelPlayer(BasePlayer):
     """Create action from some model"""
@@ -41,10 +46,12 @@ class ModelPlayer(BasePlayer):
     def action(self, information):
         if self._model is None:
             raise ModelPlayer.ModelNotFound
+        elif not hasattr(self._model, 'step'):
+            raise AttributeError
 
         return self._model.step(information)
+
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-    
