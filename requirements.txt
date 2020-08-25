@@ -8,3 +8,5 @@ pytest-openfiles==0.4.0
 pytest-remotedata==0.3.2
 
 pylint==2.4.4
+setuptools~=49.6.0
+gym~=0.17.2
