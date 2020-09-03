@@ -34,7 +34,7 @@ class Ranks:
             results = [[i, rank_function(cards)] for i, cards in enumerate(cards_dummy)]
             max_sub_rank = max(results, key=lambda x: x[1])[1]
             max_sub_rank = None if max_sub_rank == -1 else max_sub_rank
-            temp = list()
+            temp = []
             for idx, sub_rank in results:
                 if sub_rank == max_sub_rank:
                     temp.append(idx)
@@ -141,7 +141,7 @@ class Ranks:
         for card in cards:
             memos[card.number] += 1
 
-        temp = list()
+        temp = []
         for i in range(12, -1, -1):
             if memos[i] == 2:
                 temp.append(i)
@@ -293,7 +293,7 @@ class Ranks:
 
         for i in range(4):
             if sum(memos[i]) >= 5:
-                temp = list()
+                temp = []
                 for j in range(12, -1, -1):
                     if memos[i][j] == 1:
                         temp.append(j)
