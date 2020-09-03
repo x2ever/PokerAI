@@ -21,7 +21,7 @@ def search(test_path):
     """
     Get every python file's path
     """
-    temp = list()
+    temp = []
     for paths, _, file_names in os.walk(test_path):
         for file_name in file_names:
             ext = os.path.splitext(file_name)[-1]
